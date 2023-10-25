@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <PackageId>HraveMzdy.LinqErrorOr</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Ladislav Lisy</Authors>
+    <PackageIcon>icon-square.png</PackageIcon>
+    <PackageTags>Result,Results,ErrorOr,Error,Handling,Linq</PackageTags>
+    <Description>A simple, fluent discriminated union of an error or a result. This repository extends ErrorOr by Linq (Select, SelectMany, Bind, Map). Original repository ErrorOr by Amichai Mantinband</Description>
+    <PackageProjectUrl>https://hravemzdy.org/linq-error-or</PackageProjectUrl>
+    <RepositoryType>github</RepositoryType>
+    <licenses>https://opensource.org/licenses/MIT</licenses>
+    <RepositoryUrl>https://github.com/emzdyhravemzdy/LinqErrorOr.git</RepositoryUrl>
+    <PackageOutputPath>../artifacts/</PackageOutputPath>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <AssemblyName>HraveMzdy.LinqErrorOr</AssemblyName>
+    <RootNamespace>ErrorOr</RootNamespace>
+    <Copyright>Copyright 2023</Copyright>
+    <Owners>hravemzdy.org</Owners>
+    <Title>Linq extension for ErrorOr</Title>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>hravemzdy__org_publish_key.snk</AssemblyOriginatorKeyFile>
+    <ReleaseVersion>0.0.1</ReleaseVersion>
+    <SynchReleaseVersion>true</SynchReleaseVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../assets/icon-square.png" Pack="true" Visible="false" PackagePath="" />
+    <None Include="Stylecop.json" />
+    <AdditionalFiles Include="Stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ErrorOr" Version="1.3.0" />
+  </ItemGroup>
+
+</Project>
