@@ -1,4 +1,6 @@
-﻿namespace ErrorOr;
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace ErrorOr;
 
 public static class ErrorOrMatchExtension
 {
@@ -6,6 +8,19 @@ public static class ErrorOrMatchExtension
        ma.Switch(
             x => Succ(x),
             err => Fail(err));
+    public static void MatchSucc<TA>(this ErrorOr<TA> ma, Action<TA> Succ) {
+        if (ma.IsError is false)
+        {
+            Succ(ma.Value);
+        }
+    }
+    public static void MatchError<TA>(this ErrorOr<TA> ma, Action<List<Error>> Fail)
+    {
+        if (ma.IsError)
+        {
+            Fail(ma.Errors);
+        }
+    }
     public static Task MatchSuccAsync<TA>(this ErrorOr<TA> ma, Func<TA, Task> Succ, Action<List<Error>> Fail)
     {
         if (ma.IsError)
