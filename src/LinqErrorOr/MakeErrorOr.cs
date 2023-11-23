@@ -1,4 +1,6 @@
-﻿namespace ErrorOr;
+﻿using System.Collections.Generic;
+
+namespace ErrorOr;
 
 public static class MakeErrorOr<TA>
 {
@@ -6,6 +8,10 @@ public static class MakeErrorOr<TA>
     public static ErrorOr<TA> Failure(Error error) => (ErrorOr<TA>)error;
     public static ErrorOr<TA> Failure(List<Error> errors) => (ErrorOr<TA>)errors;
     public static ErrorOr<TA> Failure(params Error[] errors) => (ErrorOr<TA>)errors;
+    public static IReadOnlyList<ErrorOr<TA>> MapValues(params TA[] values) 
+        => values.Select(e => Success(e)).ToList().AsReadOnly();
+    public static IReadOnlyList<ErrorOr<TA>> MapValues(IReadOnlyList<TA> values) 
+        => values.Select(e => Success(e)).ToList().AsReadOnly();
     public static IReadOnlyList<ErrorOr<TA>> MapErrors(params Error[] errors) 
         => errors.Select(e => Failure(e)).ToList().AsReadOnly();
     public static IReadOnlyList<ErrorOr<TA>> MapErrors(params List<Error>[] errors)

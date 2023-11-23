@@ -3,6 +3,12 @@
 public static class EnumerableErrorOrExtension
 {
     // Functor UnWrap
+    public static IReadOnlyList<ErrorOr<TA>> UnWrap<TA>(this ErrorOr<IReadOnlyList<TA>> ma)
+    {
+        return ma.Match(
+           onError: err => MakeErrorOr<TA>.MapErrors(err),
+           onValue: res => MakeErrorOr<TA>.MapValues(res));
+    }
     public static IReadOnlyList<ErrorOr<TA>> UnWrap<TA>(this ErrorOr<IReadOnlyList<ErrorOr<TA>>> ma)
     {
         return ma.Match(
