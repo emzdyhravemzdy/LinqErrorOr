@@ -2,12 +2,17 @@
 
 public static class EnumerableErrorOrExtension
 {
-
+    private static IReadOnlyList<ErrorOr<TA>> UnWrap<TA>(this ErrorOr<IReadOnlyList<ErrorOr<TA>>> ma)
+    {
+        return ma.Match(
+           onError: err => MakeErrorOr<TA>.MapErrors(err),
+           onValue: res => res);
+    }
     // Functor aggregate
     public static ErrorOr<TAccumulate> AggregateErrorOr<TSource, TAccumulate>(this IEnumerable<TSource> source, 
         TAccumulate seed, Func<ErrorOr<TAccumulate>, TSource, ErrorOr<TAccumulate>> func)
     {
-        return source.Aggregate(ErrorOrResult<TAccumulate>.Success(seed), func);
+        return source.Aggregate(MakeErrorOr<TAccumulate>.Success(seed), func);
     }
     // Functor map
     public static ErrorOr<IEnumerable<TA>> SelectErrorOr<TA>(this IEnumerable<ErrorOr<TA>> ma)
