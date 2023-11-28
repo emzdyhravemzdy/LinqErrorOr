@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ErrorOr;
+﻿namespace ErrorOr;
 
 public static class ErrorOrMatchExtension
 {
@@ -19,6 +17,13 @@ public static class ErrorOrMatchExtension
         if (ma.IsError)
         {
             Fail(ma.Errors);
+        }
+    }
+    public static void MatchFirstError<TA>(this ErrorOr<TA> ma, Action<Error> Fail)
+    {
+        if (ma.IsError)
+        {
+            Fail(ma.FirstError);
         }
     }
     public static Task MatchSuccAsync<TA>(this ErrorOr<TA> ma, Func<TA, Task> Succ, Action<List<Error>> Fail)
