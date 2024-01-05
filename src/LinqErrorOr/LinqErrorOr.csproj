@@ -7,8 +7,8 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <PackageId>HraveMzdy.LinqErrorOr</PackageId>
     <Version>0.0.9</Version>
+    <PackageId>HraveMzdy.LinqErrorOr</PackageId>
     <Authors>Ladislav Lisy</Authors>
     <PackageIcon>icon-square.png</PackageIcon>
     <PackageTags>Result,Results,ErrorOr,Error,Handling,Linq</PackageTags>
@@ -22,6 +22,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
+    <ReleaseVersion>0.0.9</ReleaseVersion>
     <AssemblyName>HraveMzdy.LinqErrorOr</AssemblyName>
     <RootNamespace>ErrorOr</RootNamespace>
     <Copyright>Copyright 2023</Copyright>
@@ -30,7 +31,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>hravemzdy__org_publish_key.snk</AssemblyOriginatorKeyFile>
-    <ReleaseVersion>0.0.9</ReleaseVersion>
     <SynchReleaseVersion>true</SynchReleaseVersion>
   </PropertyGroup>
 
